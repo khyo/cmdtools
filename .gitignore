@@ -1,0 +1,61 @@
+## sipy
+
+.sshb_cache.json
+
+###########
+## Atom
+###########
+.xbuild.json
+.xbuild-preferences.json
+.clang_complete
+.gcc-flags.json
+.tags
+.tags1
+*.gch
+
+################
+# Ninja Build
+################
+*.ninja_deps
+*.ninja_log
+
+#################
+## IntelliJ / Pycharm
+#################
+.idea/
+
+#############
+## Python
+#############
+.cache/
+.tox/
+
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac
+.DS_Store
