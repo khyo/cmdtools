@@ -10,6 +10,7 @@ def main():
     parser.set_defaults(func=None)
     subparsers = parser.add_subparsers(title="subcommands")
 
+    # Git Push Helper
     sparser = subparsers.add_parser("p", help="git add . && git commit -m{ARGS} && git push")
     sparser.add_argument("msg", help="commit message, or use pull [reset] to pull all git repos", nargs="*")
     sparser.add_argument(
@@ -23,10 +24,12 @@ def main():
     sparser.add_argument("-M", "--major", help="increment the repo's major version", action="store_true")
     sparser.set_defaults(func=push)
 
+    # Git Force Pull Helper
     sparser = subparsers.add_parser("forcepull", help="force pull the repo on this branch (defaults to current branch)")
     parser.add_argument("branch", default="*", nargs="?")
     sparser.set_defaults(func=force_pull)
 
+    # dispatch subcommand
     args = parser.parse_args()
     if args.func:
         args.func(args)
@@ -35,10 +38,6 @@ def main():
 
 
 def push(args):
-    if branch := args.forcepull:
-        force_pull(branch)
-        return
-
     if not len(args.msg) and not args.force:
         print("invalid args: a commit message must be supplied!")
         return

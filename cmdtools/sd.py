@@ -5,7 +5,7 @@ from .lib import sh
 
 
 def main():
-    parser = argparse.ArgumentParser(description="systemctl tool")
+    parser = argparse.ArgumentParser(description="systemctl cmdline helper")
     parser.add_argument("service", help="service to be operated on")
     parser.add_argument("-e", "--enable", help="systemctl enable", action="store_true")
     parser.add_argument("-d", "--disable", help="systemctl disable", action="store_true")
