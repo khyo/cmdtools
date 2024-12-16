@@ -25,7 +25,7 @@ def main():
     sparser.set_defaults(func=push)
 
     # Git Force Pull Helper
-    sparser = subparsers.add_parser("forcepull", help="force pull the repo on this branch (defaults to current branch)")
+    sparser = subparsers.add_parser("fp", help="force pull the repo on this branch (defaults to current branch)")
     parser.add_argument("branch", default="*", nargs="?")
     sparser.set_defaults(func=force_pull)
 
@@ -156,3 +156,4 @@ def get_current_branch():
 
 def get_remotes():
     return list(line.strip() for line in sh("git remote", stdout=subprocess.PIPE).stdout.splitlines())
+
