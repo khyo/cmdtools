@@ -26,8 +26,7 @@ def open_in_browser(url):
     # subprocess.run(['xdg-open', url])
     subprocess.run(["brave-browser", url])
 
-
-if __name__ == "__main__":
+def main():
     # from pathlib import Path
     # with open(Path(__file__).parent.joinpath("log.txt"), mode="a+") as f:
     #     f.write(f"{sys.argv}")
@@ -36,3 +35,8 @@ if __name__ == "__main__":
         sys.exit(1)
     url = sys.argv[1]
     open_in_browser(url)
+
+
+
+if __name__ == "__main__":
+    main()

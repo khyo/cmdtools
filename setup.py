@@ -20,6 +20,7 @@ setup(
             "sd=cmdtools.sd:main",
             "xg=cmdtools.xg:main",
             "xlaunch=cmdtools.xlaunch:main",
+            "url_dispatcher=cmdtools.url_dispatcher:main",
         ]
     },
     # namespace_packages=['subinitial'],
