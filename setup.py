@@ -19,6 +19,7 @@ setup(
         "console_scripts": [
             "sd=cmdtools.sd:main",
             "xg=cmdtools.xg:main",
+            "xlaunch=cmdtools.xlaunch:main",
         ]
     },
     # namespace_packages=['subinitial'],
