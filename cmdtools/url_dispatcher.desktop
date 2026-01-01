@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Exec=/home/xerous/subinitial/git/khyo/cmdtools/cmdtools/url_dispatcher.py %u
+Terminal=false
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;x-scheme-handler/http;x-scheme-handler/https;
+Name=URL Dispatcher

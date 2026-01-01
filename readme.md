@@ -15,3 +15,16 @@ Use them if they are helpful. Ignore them if they arent.
 `xg` helps speed up routine git commands. For example:
 
 - `xg p any thing you want` translates to `git add . && git commit -m"any thing you want" && git push`
+
+
+# URL Dispatcher
+
+```bash
+chmod +x cmdtools/url_dispatcher.py
+# replace Exec=/home/xerous/subinitial/git/khyo/cmdtools/cmdtools/url_dispatcher.py with proper path
+cp cmdtools/url_dispatcher.desktop ~/.local/share/applications
+chmod +x ~/.local/share/applications/url_dispatcher.desktop
+sudo update-desktop-database
+xdg-mime default url_dispatcher.desktop x-scheme-handler/http
+xdg-mime default url_dispatcher.desktop x-scheme-handler/https
+```
