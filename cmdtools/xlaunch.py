@@ -61,8 +61,8 @@ def fixpwas():
                 line = lines[i]
                 if line.startswith("StartupWMClass=crx__"):
                     changed = True
-                    newline = line.replace("StartupWMClass=crx__", "StartupWMClass=msedge-_") + "-Default"
-                    print(f"fixpwas: changing '{fullpath}' from '{line}' -> '{newline}'")
+                    newline = line.replace("StartupWMClass=crx__", "StartupWMClass=msedge-_").strip() + "-Default\n"
+                    print(f"fixpwas: changing '{fullpath}' from\n\t'{line.strip()}' -> '{newline.strip()}'")
                     lines[i] = newline
             if changed:
                 any_changed = True
