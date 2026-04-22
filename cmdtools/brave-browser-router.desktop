@@ -1,0 +1,13 @@
+# ~/.local/share/applications/brave-browser-router.desktop
+[Desktop Entry]
+Version=1.0
+Name=Browser Router
+GenericName=Web Browser
+Comment=URL router dispatching to Zen or Brave
+Exec=/home/xerous/subinitial/git/khyo/cmdtools/cmdtools/brave_browser_router.py %U
+Terminal=false
+Type=Application
+Icon=web-browser
+Categories=Network;WebBrowser;
+MimeType=text/html;application/xhtml+xml;application/xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/about;x-scheme-handler/unknown;
+StartupNotify=true

@@ -68,7 +68,7 @@ def fixpwas():
                 any_changed = True
                 with open(fullpath, mode="w") as f:
                     f.writelines(lines)
-    if any_changed:
-        print("running", f"update-desktop-database /home/{get_username()}/.local/share/applications")
-        sh(f"update-desktop-database /home/{get_username()}/.local/share/applications")
+
+    print("running", f"update-desktop-database /home/{get_username()}/.local/share/applications")
+    sh(f"update-desktop-database /home/{get_username()}/.local/share/applications")
                 

@@ -18,13 +18,18 @@ def main():
     parser.add_argument("-f", "--follow", help="journalctl -fu {service}", action="store_true")
     parser.add_argument("-l", "--daemonreload", help="systemctl daemon-reload", action="store_true")
     parser.add_argument("-u", "--user", help="--user param", action="store_true")
+    parser.add_argument("--nginx", help="check conf & reload nginx", action="store_true")
 
     args = parser.parse_args()
+
+    if args.nginx:
+        sh("sudo nginx -t && sudo systemctl reload nginx")
+        return
 
     exe = "sudo systemctl"
     if args.user:
         exe = f"{exe} --user"
-
+    
     if args.daemonreload:
         sh(f"sudo systemctl daemon-reload")
         if (not args.service):
@@ -58,4 +63,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
