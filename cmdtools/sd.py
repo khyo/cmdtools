@@ -28,10 +28,10 @@ def main():
 
     exe = "sudo systemctl"
     if args.user:
-        exe = f"{exe} --user"
+        exe = f"systemctl --user"
     
     if args.daemonreload:
-        sh(f"sudo systemctl daemon-reload")
+        sh(f"{exe} daemon-reload")
         if (not args.service):
             return
 
@@ -50,7 +50,7 @@ def main():
         time.sleep(1)
         sh(f"{exe} status {args.service}")
     elif args.grep:
-        sh(f"{exe} | grep --color=always {args.service}")
+        sh(f"{exe} | grep --color=always {args.service or ""}", check=False)
     elif args.follow:
         sh(f"sudo journalctl -fu {args.service}")
     elif args.journal:
@@ -58,7 +58,8 @@ def main():
     elif args.status:
         sh(f"{exe} status {args.service}")
     else:
-        sh(f"{exe} status {args.service}")
+        sh(f"{exe}")
+
 
 
 if __name__ == "__main__":
