@@ -50,7 +50,7 @@ def main():
         time.sleep(1)
         sh(f"{exe} status {args.service}")
     elif args.grep:
-        sh(f"{exe} | grep --color=always {args.service or ""}", check=False)
+        sh(f"{exe} | grep --color=always {args.service or ''}", check=False)
     elif args.follow:
         sh(f"sudo journalctl -fu {args.service}")
     elif args.journal:
