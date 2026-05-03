@@ -21,6 +21,7 @@ setup(
             "xg=cmdtools.xg:main",
             "xlaunch=cmdtools.xlaunch:main",
             "url_dispatcher=cmdtools.url_dispatcher:main",
+            "brave-browser-router=cmdtools.brave_browser_router:main",
         ]
     },
     # namespace_packages=['subinitial'],

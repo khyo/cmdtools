@@ -18,17 +18,23 @@ def main():
     parser.add_argument("-f", "--follow", help="journalctl -fu {service}", action="store_true")
     parser.add_argument("-l", "--daemonreload", help="systemctl daemon-reload", action="store_true")
     parser.add_argument("-u", "--user", help="--user param", action="store_true")
+    parser.add_argument("--nginx", help="check conf & reload nginx", action="store_true")
 
     args = parser.parse_args()
 
+    if args.nginx:
+        sh("sudo nginx -t && sudo systemctl reload nginx")
+        return
+
     exe = "sudo systemctl"
+    journal = "sudo journalctl"
     if args.user:
-        exe = f"{exe} --user"
+        exe = f"systemctl --user"
+        journal = "journalctl --user"
 
     if args.daemonreload:
-        sh(f"sudo systemctl daemon-reload")
-        if (not args.service):
-            return
+        sh(f"{exe} daemon-reload")
+        return
 
     if args.enable:
         sh(f"{exe} enable {args.service}")
@@ -36,26 +42,26 @@ def main():
         sh(f"{exe} disable {args.service}")
     elif args.start:
         sh(f"{exe} start {args.service}")
-        time.sleep(1)
-        sh(f"{exe} status {args.service}")
+        time.sleep(0.5)
+        sh(f"{exe} status {args.service}", check=False)
     elif args.stop:
         sh(f"{exe} stop {args.service}")
     elif args.restart:
         sh(f"{exe} restart {args.service}")
-        time.sleep(1)
+        time.sleep(0.5)
         sh(f"{exe} status {args.service}")
     elif args.grep:
-        sh(f"{exe} | grep --color=always {args.service}")
+        sh(f"{exe} | grep --color=always {args.service or ''}", check=False)
     elif args.follow:
-        sh(f"sudo journalctl -fu {args.service}")
+        sh(f"{journal} -fu {args.service}")
     elif args.journal:
-        sh(f"sudo journalctl -u {args.service}")
+        sh(f"{journal} -u {args.service}")
     elif args.status:
         sh(f"{exe} status {args.service}")
     else:
-        sh(f"{exe} status {args.service}")
+        sh(f"{exe}")
+
 
 
 if __name__ == "__main__":
     main()
-
