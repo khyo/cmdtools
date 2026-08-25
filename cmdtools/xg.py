@@ -11,6 +11,9 @@ def main():
     subparsers = parser.add_subparsers(title="subcommands")
 
     # Git Push Helper
+    sparser = subparsers.add_parser("m", help="git branch -f master && git push origin master")
+    sparser.set_defaults(func=push_master)
+
     sparser = subparsers.add_parser("p", help="git add . && git commit -m{ARGS} && git push")
     sparser.add_argument("msg", help="commit message, or use pull [reset] to pull all git repos", nargs="*")
     sparser.add_argument(
@@ -94,6 +97,9 @@ def push(args):
             print(ex)
 
 
+def push_master(args):
+    sh("git branch -f master && git push origin master")
+
 def force_pull(args):
     branch: str = args.branch
     if branch == "*":
@@ -156,4 +162,3 @@ def get_current_branch():
 
 def get_remotes():
     return list(line.strip() for line in sh("git remote", stdout=subprocess.PIPE).stdout.splitlines())
-
